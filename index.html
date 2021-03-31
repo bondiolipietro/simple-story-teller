@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="shortcut icon" href="assets/img/frog.png" type="image/x-icon">
+    <title>Story Teller</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="story_image">
+        <img
+          class="story_image_container"
+          src="./assets/img/4-ANIMATION-OVELHINHA-512PX.png"
+          alt=""
+        />
+      </div>
+      <div class="story_text_box">
+        <div class="story_content">
+          <p>História</p>
+          <div class="story_text_container"></div>
+        </div>
+        <div class="story_controls">
+          <div class="button previous_button">anterior</div>
+          <div class="button restart_button">reiniciar</div>
+          <div class="button next_button">continuar</div>
+        </div>
+      </div>
+      <div class="story_notes">
+        <p>Notas</p>
+        <p>
+          Qualquer possível semelhança de nomes com a realidade é meramente coincidência.
+        </p>
+      </div>
+    </div>
+
+    <script src="./assets/js/StoryController.js"></script>
+    <script src="./assets/js/story.js"></script>
+    <script>
+      let storyController = new StoryController(
+        story,
+        ".story_text_container",
+        ".story_image_container"
+      );
+      storyController.changePageTitle();
+      storyController.initialStoryFrame();
+
+      document
+        .querySelector(".previous_button")
+        .addEventListener("click", function (event) {
+          storyController.previousStoryFrame();
+        });
+
+      document.querySelector(".next_button").addEventListener("click", function (event) {
+        storyController.nextStoryFrame();
+      });
+
+      document
+        .querySelector(".restart_button")
+        .addEventListener("click", function (event) {
+          storyController.initialStoryFrame();
+        });
+    </script>
+  </body>
+</html>
